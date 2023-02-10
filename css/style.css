@@ -1,0 +1,175 @@
+@import url(custom.css);
+@import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#cart {
+  position: absolute;
+  top: 0;
+  left: 500px;
+}
+header h3,
+#cart h3 {
+  margin-top: 0;
+  padding-top: 1rem;
+}
+table {
+  border-collapse: collapse;
+}
+table tr {
+  border-bottom: 1px solid black;
+}
+table tr th,
+td {
+  min-width: 7rem;
+  padding: 5px;
+  text-align: center;
+}
+table thead,
+tfoot {
+  background-color: antiquewhite;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.flex-row {
+  display: flex;
+  gap: 1rem;
+}
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+  /* z-index: 2; */
+  background-image: var(--svg2);
+}
+.login-card {
+  height: 70%;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  border-radius: 1rem;
+}
+.img-holder {
+  border-radius: 1rem 0 0 1rem;
+  background-color: #125352;
+  background-image: var(--svg1);
+}
+.form-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #291a3e;
+  border-radius: 0 1rem 1rem 0;
+  background-color: #1a3e3c;
+}
+
+#login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#login input[type="text"] {
+  font-size: 1.5rem;
+  padding: 0.3rem 1rem;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  background-color: #071a1800;
+}
+#login input[type="text"]::placeholder {
+  color: white;
+}
+#login h1 {
+  position: relative;
+  top: -3rem;
+  color: #ebe624;
+  font-family: "Prosto One", cursive;
+}
+#login input[type="submit"] {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  padding: 0.3rem 1.6rem;
+  border: none;
+  background-color: #ebe624;
+  border-radius: 2rem;
+}
+#login input[type="text"]:focus {
+  outline: none;
+  border-color: yellow;
+}
+
+#header {
+  margin: 0 2rem;
+}
+.cont {
+  margin: 0 2rem;
+}
+input[type="submit"]:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+.text-left {
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-reverse {
+  flex-direction: column-reverse;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.card {
+  border-bottom: 1px solid black;
+  width: 60%;
+}
+.margin-left {
+  margin-left: 1rem;
+}
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+.margin-top {
+  margin-top: 1rem;
+}
+.margin-auto {
+  margin: auto;
+}
+.p-1 {
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .login-card {
+    width: 60%;
+  }
+}
