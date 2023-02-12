@@ -6,12 +6,12 @@ class DeliveryService extends User {
   private $firstname;
   private $lastname;
 
-  public function __construct($id, $firstname, $lastname, $email, $password) 
+  public function __construct($id, $firstname, $lastname, $email, $password, $type) 
   {
     $this->id = $id;
     $this->firstname = $firstname;
     $this->lastname = $lastname;
-    parent::__construct($email, $password);
+    parent::__construct($email, $password, $type);
   }
 
 
@@ -32,11 +32,15 @@ class DeliveryService extends User {
 	public function getEmail() {
 		return $this->email;
 	}
+	public function getType() {
+		return $this->type;
+	}
 
 	public function __toString()
 	{
 		return "Delivery service: " . strtoupper($this->getFirstname()) . " " . strtoupper($this->getLastname());
 	}
+
 }
 
 ?>

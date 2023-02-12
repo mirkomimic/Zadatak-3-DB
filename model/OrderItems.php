@@ -5,7 +5,7 @@ class OrderItems {
   public Order $order;
   public Item $item;
   public $qty;
-  public $total;
+  public $total_price;
 
   public function __construct($order, $item, $qty)
   {

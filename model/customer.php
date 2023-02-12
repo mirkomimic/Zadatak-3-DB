@@ -7,13 +7,13 @@ class Customer extends User {
   private $lastname;
   private $address;
 
-  public function __construct($id, $firstname, $lastname, $address, $email, $password)
+  public function __construct($id, $firstname, $lastname, $address, $email, $password, $type)
   {
     $this->id = $id;
     $this->firstname = $firstname;
     $this->lastname = $lastname;
     $this->address = $address;
-    parent::__construct($email, $password);
+    parent::__construct($email, $password, $type);
   }
 
 
@@ -38,11 +38,16 @@ class Customer extends User {
 	public function getPassword() {
 		return $this->password;
 	}
+	public function getType() {
+		return $this->type;
+	}
+
 
   public function __toString()
   {
     return "Customer: " . strtoupper($this->firstname) . " " . strtoupper($this->lastname);
   }
+
 }
 
 ?>

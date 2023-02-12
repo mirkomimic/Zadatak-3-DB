@@ -1,0 +1,20 @@
+https://github.com/mirkomimic/Zadatak-3-DB.git
+
+
+
+
+Potrebno je nadograditi postojeći sistem (iz zadatka modula 2,3) tako da u sistemu postoji rad sa jednom od baza podataka:
+MySQL
+MongoDB
+Minimalni zahtevi domaćeg zadatka:
+
+Kreirati bazu koja odgovara strukturi sistema //
+Nad bazom moraju biti implementirane osnovne CRUD operacije (najmanje 3)
+Potrebno je da postoje PHP modeli koji odgovaraju MySQL/MongoDB tabelama/dokumentima - korišćenje OOP
+Kod je neophodno da bude verzionisan (najmanje 3 verzije/commita) sa smislenim porukama
+Kod je potrebno da bude postavljen na GitHub
+Zahtevi za najveći broj poena:
+
+Obezbediti bar dve dodatne funkcionalnosti (pretraga, sortiranje, upravljanje greškama i sl.) i koristiti JavaScript ili jQuery. 
+ Jedinstven dizajn sajta
+U okviru ovog zadatka potrebno je postaviti dokumentaciju projekta koja će na prvoj strani sadržati link do odgovarajućeg GitHub repozitorijuma.

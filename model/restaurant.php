@@ -8,12 +8,12 @@ class Restaurant extends User {
   private $name;
   private $address;
 
-  public function __construct($id, $name, $address, $email, $password)
+  public function __construct($id, $name, $address, $email, $password, $type)
   {
     $this->id = $id;
     $this->name = $name;
     $this->address = $address;
-    parent::__construct($email, $password);
+    parent::__construct($email, $password, $type);
   }
 
   public function viewItems(Item ...$array) {
@@ -40,6 +40,10 @@ class Restaurant extends User {
   public function getPassword() {
     return $this->password;
   }
+  public function getType() {
+    return $this->type;
+  }
+
 
   public function __toString()
   {

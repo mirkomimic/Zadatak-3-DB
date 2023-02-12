@@ -2,7 +2,17 @@
   <div >
     <h3>
       <?php
-        echo $user;
+        switch ($user->type) {
+          case 'Customer':
+            echo $customer;
+            break;
+          case 'Delivery Service':
+            echo $delivery_service;
+            break;         
+          default:
+            echo $restaurant;
+            break;
+        }
       ?>
     </h3>
   </div>

@@ -1,10 +1,10 @@
 <?php
 
-if(isset($_POST['add-item'])) {
-  $maxId = Model\Restaurant::maxId($itemsArray);
-  $_SESSION['items'][] = new Model\Item($maxId, $_POST['itemName'], $_POST['itemPrice'], $user);
-  header("Location: .");
-}
+// if(isset($_POST['add-item'])) {
+//   $maxId = Model\Restaurant::maxId($itemsArray);
+//   $_SESSION['items'][] = new Model\Item($maxId, $_POST['itemName'], $_POST['itemPrice'], $user);
+//   header("Location: .");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ if(isset($_POST['add-item'])) {
 
   <h3>Your items:</h3>
   <?php
-    $user->viewItems(...$_SESSION['items']);
+    // $user->viewItems(...$_SESSION['items']);
   ?>
   <hr>
   <!-- Orders -->
@@ -34,18 +34,18 @@ if(isset($_POST['add-item'])) {
     <input type="submit" value="reset orders" name="reset-orders">
   </form>
   <?php 
-    if(!empty($_SESSION['orders'])) {
-      $idArray = [];
-      foreach($_SESSION['orders'] as $i) {
-        if($i->order->getRestaurant() === $user)
-          $idArray[] = $i->order->getId();
-      }
-      $uniqueIdCartArray = array_unique($idArray);  
-    }
+    // if(!empty($_SESSION['orders'])) {
+    //   $idArray = [];
+    //   foreach($_SESSION['orders'] as $i) {
+    //     if($i->order->getRestaurant() === $user)
+    //       $idArray[] = $i->order->getId();
+    //   }
+    //   $uniqueIdCartArray = array_unique($idArray);  
+    // }
   ?>
 
   <br>
-  <div class="flex flex-column flex-reverse">
+  <!-- <div class="flex flex-column flex-reverse"> -->
     <?php 
       if(!empty($uniqueIdCartArray)) {
         foreach($uniqueIdCartArray as $id) :      

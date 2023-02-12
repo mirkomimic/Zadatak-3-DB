@@ -6,7 +6,7 @@ class Order implements Map {
   private $id;
   private Customer $customer;
   private Restaurant $restaurant;
-  public static $status = "waiting";
+  public static $status = "Created";
   private $date;
 
   public function __construct($id, Customer $customer, Restaurant $restaurant, $date)
