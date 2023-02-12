@@ -12,34 +12,10 @@ if(isset($_SESSION['logged_user'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // $query = ("SELECT * FROM restaurants
-        //           WHERE email='$email'");
-        // $query = ("SELECT * FROM users, restaurants 
-        //           WHERE users.email='$email'
-        //           AND users.password='$password'
-        //           OR restaurants.email = '$email'
-        //           AND restaurants.password='$password'");
-
-        $query = ("SELECT * FROM users 
-                  WHERE email='$email'
-                  AND password='$password'");
-        $result = $conn->query($query);
-        if($result->num_rows == 1) {
-          
-          $_SESSION['logged_user'] = $result->fetch_object();
-          header("Location: ../");
-        } else {
-          $query2 = ("SELECT * FROM restaurants 
-                      WHERE email='$email'
-                      AND password='$password'");
-          $result2 = $conn->query($query2);
-  
-          if($result2->num_rows == 1) {
-            $_SESSION['logged_user'] = $result2->fetch_object();
-            header("Location: ../");    
-          }
-        }
-
+        $_SESSION['logged_user'] = Controler\Controler::login($email, $password, $conn);
+        if ($_SESSION['logged_user'] == null) echo "Error! ";
+        else header("Location: ../");
+        // exit();
       }
       echo "Incorrect email or password";
     }

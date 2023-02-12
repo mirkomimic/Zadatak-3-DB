@@ -5,12 +5,14 @@ class DeliveryService extends User {
   private $id;
   private $firstname;
   private $lastname;
+	private $address;
 
-  public function __construct($id, $firstname, $lastname, $email, $password, $type) 
+  public function __construct($id, $firstname, $lastname, $address, $email, $password, $type) 
   {
     $this->id = $id;
     $this->firstname = $firstname;
     $this->lastname = $lastname;
+    $this->address = $address;
     parent::__construct($email, $password, $type);
   }
 

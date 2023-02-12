@@ -7,13 +7,16 @@ class Item {
   private $name;
   private $price;
   private Restaurant $restaurant;
+  private $category;
 
-  public function __construct($id, $name, $price, Restaurant $restaurant)
+  public function __construct($id, $name, $price, Restaurant $restaurant, $category)
   {
     $this->id = $id;
     $this->name = $name;
-    $this->price = $price;
+    // $this->price = $price;
+    $this->setPrice($price);
     $this->restaurant = $restaurant;
+    $this->category = $category;
   }
 
   // potrebno za array_column sa objektima
@@ -36,6 +39,17 @@ class Item {
   public function getPrice() {
     return $this->price;
   }
+  public function getCategory() {
+    return $this->category;
+  }
+
+  public function setPrice($price) {
+    $this->price = Format::formatNumber(intval($price));
+
+    return $this;
+  }
+
+
 
   public function __toString()
   {

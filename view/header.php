@@ -1,4 +1,5 @@
 <header id="header">
+  <h3 class="logo">Logo</h3>
   <div >
     <h3>
       <?php
@@ -16,9 +17,9 @@
       ?>
     </h3>
   </div>
-  <div>
-    <form action="" method="POST">
-      <input type="submit" value="Logout" name="logout">
+  <div class="logout-box">
+    <form  action="" method="POST">
+      <input class="btn btn-warning" type="submit" value="Logout" name="logout">
     </form>
   </div>
 </header>

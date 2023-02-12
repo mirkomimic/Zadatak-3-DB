@@ -1,10 +1,9 @@
 <?php
 
-// if(isset($_POST['add-item'])) {
-//   $maxId = Model\Restaurant::maxId($itemsArray);
-//   $_SESSION['items'][] = new Model\Item($maxId, $_POST['itemName'], $_POST['itemPrice'], $user);
-//   header("Location: .");
-// }
+
+if(isset($_POST['add-item'])) {
+  include "handler/add-item.php";
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,12 +20,30 @@
 
 <div class="cont">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
+  <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
 
-  <h3>Your items:</h3>
-  <?php
-    // $user->viewItems(...$_SESSION['items']);
-  ?>
+  <h3 class="mb-2">Your items:</h3>
+  <div id="items">
+    <?php
+      $items = Controler\Item::getItemsByRestaurantID($restaurant, $conn);
+      // print_r($item);
+      foreach($items as $i):
+    ?>
+    <div class="card width-18 text-center bg-light">
+      <p>Name: <?= $i->getName() ?></p>
+      <p>Price: <?= $i->getPrice() ?></p>
+      <p>Category: <?= $i->getCategory() ?></p>
+      <div class="m-2">
+        <form action="">
+          <input type="text" value="<?= $i->getId() ?>" hidden>
+          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+        </form>
+      </div>
+    </div>
+    <?php
+      endforeach;
+    ?>
+  </div>
   <hr>
   <!-- Orders -->
   <h3>Orders for you:</h3>
@@ -105,7 +122,7 @@
       <?php } ?>
   </div>
 
-  <!-- Modal -->
+  <!-- Add Item Modal -->
   <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -115,14 +132,21 @@
         </div>
         <div class="modal-body">
           <!-- add-item form -->
-          <form action="" method="post" id="addItemForm">
+          <form action="#" method="post" id="addItemForm">
             <div class="mb-3 form-floating">
-              <input type="text" name="itemName" class="form-control" placeholder="Item Name" id="floatingInput" required>
-              <label for="floatingInput">Name</label>
+              <input type="text" name="itemName" class="form-control" placeholder="Item Name" id="floatingInputName" required>
+              <label for="floatingInputName">Name</label>
             </div>
             <div class="mb-3 form-floating">
               <input type="text" name="itemPrice" class="form-control" id="floatingInputPrice" placeholder="Price" required>
               <label for="floatingInputPrice">Price</label>
+            </div>
+            <div class="mb-3 ">
+              <select class="form-select form-select-lg" name="itemCategory" required>
+                <option selected disabled hidden>Select category</option>
+                <option value="Food">Food</option>
+                <option value="Drink">Drink</option>
+              </select>
             </div>
           </form>
         </div>
@@ -136,5 +160,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
