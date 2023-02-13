@@ -1,7 +1,7 @@
 <?php
 
 
-if(isset($_POST['add-item'])) {
+if(isset($_POST['add_item'])) {
   include "handler/add-item.php";
 }
 
@@ -27,6 +27,7 @@ if(isset($_POST['add-item'])) {
     <?php
       $items = Controler\Item::getItemsByRestaurantID($restaurant, $conn);
       // print_r($item);
+      if(!empty($items)) {
       foreach($items as $i):
     ?>
     <div class="card width-18 text-center bg-light">
@@ -42,6 +43,7 @@ if(isset($_POST['add-item'])) {
     </div>
     <?php
       endforeach;
+    } else echo "No Items!";
     ?>
   </div>
   <hr>
@@ -152,7 +154,7 @@ if(isset($_POST['add-item'])) {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" form="addItemForm" name="add-item">Add Item</button>
+          <button type="submit" class="btn btn-primary" form="addItemForm" name="add_item">Add Item</button>
         </div>
       </div>
     </div>
