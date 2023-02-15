@@ -123,15 +123,18 @@ tfoot {
 }
 
 #header {
-  /* margin: 0 2rem; */
+  background-color: #5694a1;
+}
+.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #5694a1;
   height: 3.3rem;
 }
 .cont {
-  margin: 2rem 2rem;
+  /* margin: 2rem 2rem; */
+  width: 80%;
+  margin: auto;
 }
 input[type="submit"]:hover {
   cursor: pointer;
@@ -175,11 +178,19 @@ input[type="submit"]:hover {
 .p-1 {
   padding: 1rem;
 }
-.logout-box {
-  margin: 0 5rem 0 auto;
+/* .logout-box {
+  margin-right: 5rem;
 }
 .logo {
-  margin: 0 auto 0 5rem;
+  margin-left: 5rem;
+} */
+.title {
+  margin: auto;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  place-items: center;
 }
 
 @media only screen and (max-width: 1300px) {

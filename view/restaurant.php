@@ -1,9 +1,8 @@
 <?php
 
-
-if(isset($_POST['add_item'])) {
-  include "handler/add-item.php";
-}
+// if(isset($_POST['add_item'])) {
+//   include "controler/controlerItem.php";
+// }
 
 ?>
 <!DOCTYPE html>
@@ -23,9 +22,9 @@ if(isset($_POST['add_item'])) {
   <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
 
   <h3 class="mb-2">Your items:</h3>
-  <div id="items">
+  <div class="grid-3 justify-content-center gap-3">
     <?php
-      $items = Controler\Item::getItemsByRestaurantID($restaurant, $conn);
+      $items = Model\Item::getItemsByRestaurantID($restaurant, $conn);
       // print_r($item);
       if(!empty($items)) {
       foreach($items as $i):
@@ -35,8 +34,9 @@ if(isset($_POST['add_item'])) {
       <p>Price: <?= $i->getPrice() ?></p>
       <p>Category: <?= $i->getCategory() ?></p>
       <div class="m-2">
-        <form action="">
-          <input type="text" value="<?= $i->getId() ?>" hidden>
+        <form action="" class="deleteItemForm" name="deleteItemForm">
+          <input type="text" name="item_id" value="<?= $i->getId() ?>" hidden>
+          <input type="text" name="restaurant_id" value="<?= $restaurant->getId() ?>" hidden>
           <input type="submit" class="btn btn-danger btn-sm" value="Delete">
         </form>
       </div>
@@ -134,7 +134,7 @@ if(isset($_POST['add_item'])) {
         </div>
         <div class="modal-body">
           <!-- add-item form -->
-          <form action="#" method="post" id="addItemForm">
+          <form action="" method="post" id="addItemForm" name="addItemForm">
             <div class="mb-3 form-floating">
               <input type="text" name="itemName" class="form-control" placeholder="Item Name" id="floatingInputName" required>
               <label for="floatingInputName">Name</label>
@@ -149,6 +149,9 @@ if(isset($_POST['add_item'])) {
                 <option value="Food">Food</option>
                 <option value="Drink">Drink</option>
               </select>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" name="restaurant_id" class="form-control" id="floatingInputPrice" placeholder="Price" value="<?= $restaurant->getId() ?>" required hidden>
             </div>
           </form>
         </div>

@@ -22,7 +22,9 @@ if(isset($_SESSION['logged_user'])) {
   }
 
 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,26 +1,28 @@
-<header id="header">
-  <h3 class="logo">Logo</h3>
-  <div >
-    <h3>
-      <?php
-        switch ($user->type) {
-          case 'Customer':
-            echo $customer;
-            break;
-          case 'Delivery Service':
-            echo $delivery_service;
-            break;         
-          default:
-            echo $restaurant;
-            break;
-        }
-      ?>
-    </h3>
-  </div>
-  <div class="logout-box">
-    <form  action="" method="POST">
-      <input class="btn btn-warning" type="submit" value="Logout" name="logout">
-    </form>
+<header id="header" class="mb-5">
+  <div class="cont navbar">
+    <h3 class="logo">Food Delivery</h3>
+    <div class="title">
+      <h3>
+        <?php
+          switch ($user->type) {
+            case 'Customer':
+              echo $customer;
+              break;
+            case 'Delivery Service':
+              echo $delivery_service;
+              break;         
+            default:
+              echo $restaurant;
+              break;
+          }
+        ?>
+      </h3>
+    </div>
+    <div class="logout-box">
+      <form  action="" method="POST">
+        <input class="btn btn-warning" type="submit" value="Logout" name="logout">
+      </form>
+    </div>
   </div>
 </header>
 

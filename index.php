@@ -6,8 +6,6 @@ if(!isset($_SESSION['logged_user'])) {
   header("Location: view/login.php");
 } else {
   $user = $_SESSION['logged_user'];
-  // include "view/header.php";
-
 
   if($user->type == "Customer") {
     $customer = new Model\Customer($user->id, $user->firstname, $user->lastname, $user->address, $user->email, $user->password, $user->type);

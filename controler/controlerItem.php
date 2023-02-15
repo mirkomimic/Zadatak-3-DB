@@ -1,32 +1,43 @@
 <?php
-namespace Controler;
-use Model;
+require_once "../db.php";
+require_once "../model/item.php";
 
-class Item {
+// add item
+if(isset($_POST['itemName']) && isset($_POST['itemPrice']) && isset($_POST['itemCategory']) && isset($_POST['restaurant_id'])) {
 
-  public static function getItemsByRestaurantID(Model\Restaurant $restaurant, $conn) {
-    $id = $restaurant->getId();
-    $query = "SELECT * FROM items WHERE restaurant_id=$id";
-    $result = $conn->query($query);
-    $array = [];
-    if($result !== false && $result->num_rows > 0) {
-      while($obj = $result->fetch_object()) {
-        $item = new Model\Item($obj->id, $obj->name, $obj->price, $restaurant, $obj->category);
-        $array[] = $item;
-      }
-      return $array;
+  if($_POST['itemName'] != "" && is_numeric($_POST['itemPrice']) && $_POST['itemCategory'] != "" && is_numeric($_POST['restaurant_id'])) {
+    $name = $_POST['itemName'];
+    $price = $_POST['itemPrice'];
+    $category = $_POST['itemCategory'];
+    $restaurant_id = $_POST['restaurant_id'];
+
+    $response = Model\Item::addItem($name, $price, $category, $restaurant_id, $conn);
+    if($response) {
+      echo "Success";
     }
-    return null;
-  }
-
-  public static function addItem($name, $price, $category, $restaurant_id, $conn) {
-    $query = "INSERT INTO items (id, name, price, category, restaurant_id) 
-              VALUES (null, '$name', $price, '$category', $restaurant_id)";
-    $result = $conn->query($query);
-    if($result === TRUE) echo "Item added";
-    else echo "Item not added";
+    else {
+      echo $response;
+      echo "Failed";
+    }
   }
 }
+
+// delete item
+if(isset($_POST['item_id']) && isset($_POST['restaurant_id'])) {
+  $item_id = $_POST['item_id'];
+  $restaurant_id = $_POST['restaurant_id'];
+  if(is_numeric($item_id) && is_numeric($restaurant_id)) {
+    $response = Model\Item::deleteItem($item_id, $restaurant_id, $conn);
+    if($response) {
+      echo "Success";
+    }
+    else {
+      echo $response;
+      echo "Failed";
+    }
+  }
+}
+
 
 
 ?>

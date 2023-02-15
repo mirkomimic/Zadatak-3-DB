@@ -19,6 +19,34 @@ class Item {
     $this->category = $category;
   }
 
+  public static function getItemsByRestaurantID(Restaurant $restaurant, $conn) {
+    $id = $restaurant->getId();
+    $query = "SELECT * FROM items WHERE restaurant_id=$id";
+    $result = $conn->query($query);
+    $array = [];
+    if($result !== false && $result->num_rows > 0) {
+      while($obj = $result->fetch_object()) {
+        $item = new Item($obj->id, $obj->name, $obj->price, $restaurant, $obj->category);
+        $array[] = $item;
+      }
+      return $array;
+    }
+    return null;
+  }
+
+  public static function addItem($name, $price, $category, $restaurant_id, $conn) {
+    $query = "INSERT INTO items (id, name, price, category, restaurant_id) 
+              VALUES (null, '$name', $price, '$category', $restaurant_id)";
+    return $conn->query($query);
+  }
+
+  public static function deleteItem($id, $restaurant_id, $conn) {
+    $query = "DELETE FROM items WHERE id=$id AND restaurant_id=$restaurant_id";
+    return $conn->query($query);
+  }
+
+
+
   // potrebno za array_column sa objektima
   // public function __get($i) {
   //   return $this->$i;
