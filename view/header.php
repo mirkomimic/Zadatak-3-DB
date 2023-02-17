@@ -1,4 +1,4 @@
-<header id="header" class="mb-5">
+<header id="header" class="fixed-top">
   <div class="cont navbar">
     <h3 class="logo">Food Delivery</h3>
     <div class="title">

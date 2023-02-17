@@ -45,6 +45,53 @@ class Item {
     return $conn->query($query);
   }
 
+  public static function find($id, $conn) {
+    $query = "SELECT id, name, price, category FROM items WHERE id=$id";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+    return $row;
+  }
+
+  public static function update($id, $name, $price, $category, $restaurant_id, $conn) {
+    $query = "UPDATE items SET name='$name', price=$price, category='$category' WHERE  restaurant_id=$restaurant_id AND id=$id";
+    return $conn->query($query);
+  }
+
+  public static function getDescByPrice($restaurant_id, $conn) {
+    $query = "SELECT * FROM items WHERE restaurant_id=$restaurant_id ORDER BY price DESC";
+    $result = $conn->query($query);
+    
+    $array= [];
+    while($row = $result->fetch_assoc()) {
+      $array[] = $row;
+    }
+    return $array;
+  }
+
+  public static function getAscByPrice($restaurant_id, $conn) {
+    $query = "SELECT * FROM items WHERE restaurant_id=$restaurant_id ORDER BY price ASC";
+    $result = $conn->query($query);
+    
+    $array= [];
+    while($row = $result->fetch_assoc()) {
+      $array[] = $row;
+    }
+    return $array;
+  }
+
+  public static function getItemsByName($restaurant_id, $searchValue, $conn) {
+    $query = "SELECT * FROM items WHERE restaurant_id=$restaurant_id AND name LIKE '%$searchValue%'";
+    $result = $conn->query($query);
+    
+    $array= [];
+    while($row = $result->fetch_assoc()) {
+      $array[] = $row;
+    }
+    return $array;
+  }
+
+
+
 
 
   // potrebno za array_column sa objektima

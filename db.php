@@ -10,7 +10,7 @@ require_once __DIR__ . "/model/iMap.php";
 require_once __DIR__ . "/model/order.php";
 require_once __DIR__ . "/model/shoppingCart.php";
 require_once __DIR__ . "/model/OrderItems.php";
-// require_once __DIR__ . "/controler/controler.php";
+require_once __DIR__ . "/controler/controler.php";
 // require_once __DIR__ . "/controler/controlerItem.php";
 
 session_start();
