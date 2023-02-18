@@ -1,8 +1,8 @@
-<header id="header" class="sticky-top">
-  <div class="cont navbar">
-    <h3 class="logo">Food Delivery</h3>
-    <div class="title">
-      <h3>
+<!-- header -->
+<header id="header" class="">
+  <div class="hero d-flex justify-content-center align-items-center ">
+    <div class="hero_card rounded d-flex align-items-center justify-content-center">
+      <h3 >
         <?php
           switch ($user->type) {
             case 'Customer':
@@ -18,13 +18,27 @@
         ?>
       </h3>
     </div>
-    <div class="logout-box">
+  </div>
+</header>
+<!-- navbar -->
+<nav class="myNavbar sticky-top">
+  <div class="cont d-flex">
+    <div class="d-flex align-items-center">
+      <h3 class="logo "><span class="span1">Food</span><span class="span2">D</span>elivery</h3>
+    </div>
+    <div class="nav_links d-flex align-items-center ms-auto me-5">
+      <ul class="d-flex mb-0 me-5 gap-3 ">
+        <li><a href="#items_section">Items</a></li>
+        <li><a href="#orders_section">Orders</a></li>
+      </ul>
+    </div>
+    <div class="logout-box d-flex align-items-center">
       <form  action="" method="POST">
         <input class="btn btn-warning" type="submit" value="Logout" name="logout">
       </form>
     </div>
   </div>
-</header>
+</nav>
 
 <?php
 

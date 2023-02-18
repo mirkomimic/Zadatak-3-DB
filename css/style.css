@@ -6,6 +6,8 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 body {
   background-color: #000000;
@@ -125,20 +127,31 @@ tfoot {
   outline: none;
   border-color: yellow;
 }
-
-#header {
-  background-color: #144630f2;
-  /* background-color: #5694a1; */
-}
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.myNavbar {
   height: 3.3rem;
+  background-color: #144630f2;
+}
+nav ul {
+  list-style: none;
+}
+nav ul li {
+  font-size: 1.3rem;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+nav ul li a:hover {
+  color: #000000;
+  transition: color 0.3s;
+}
+nav .cont {
+  height: 3.3rem;
+  /* padding-top: 0.5rem; */
 }
 .cont {
-  /* margin: 2rem 2rem; */
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 input[type="submit"]:hover {
@@ -161,15 +174,9 @@ input[type="submit"]:hover {
 .justify-content-between {
   justify-content: space-between;
 }
-.card {
-  /* border-bottom: 1px solid black; */
-  /* background-color: #5694a194; */
-}
 .card:hover {
   cursor: pointer;
-  /* opacity: 0.9; */
   background-color: #3a6f6fb5;
-  /* background-color: #429aacd3; */
   transition: background-color 0.2s ease;
 }
 .width-18 {
@@ -193,12 +200,6 @@ input[type="submit"]:hover {
 .p-1 {
   padding: 1rem;
 }
-/* .logout-box {
-  margin-right: 5rem;
-}
-.logo {
-  margin-left: 5rem;
-} */
 .title {
   margin: auto;
 }
@@ -210,16 +211,12 @@ input[type="submit"]:hover {
 .selectedItem {
   outline: 3px solid #45ce4b;
   /* background-color: #50c6ddee !important; */
-  /* outline: 3px solid #2991ce;
-  background-color: #50c6ddee !important; */
 }
 .bg-modal {
   backdrop-filter: blur(5px);
-  /* filter: blur(10px); */
   background-color: #5694a194;
 }
 .bg-card {
-  /* background-color: #5694a1e6; */
   background-color: #284b4bb5;
 }
 .bg-blur {
@@ -227,7 +224,6 @@ input[type="submit"]:hover {
 }
 footer {
   background-color: #144630f2;
-  /* background-color: #5694a1; */
 }
 .bg-black {
   background-color: #000000;
@@ -250,7 +246,23 @@ footer {
 .modal .form-select {
   background-color: #1f3539;
 }
-/* 1f3539 */
+.hero {
+  height: 20rem;
+  background-image: var(--svg1);
+}
+.hero_card {
+  height: 250px;
+  width: 600px;
+  background-color: #6f6e51a6;
+  backdrop-filter: blur(3px);
+  color: #f9db50;
+}
+.span1 {
+  color: #f7e015;
+}
+.span2 {
+  color: #1b8703;
+}
 
 @media only screen and (max-width: 1300px) {
   .login-card {
