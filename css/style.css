@@ -8,13 +8,17 @@
   padding: 0;
 }
 body {
-  padding: 0;
-  /* margin: 0; */
+  background-color: #000000;
+  color: white;
+  /* background-image: var(--svg2); */
 }
 
 p {
   margin-top: 0;
   margin-bottom: 0;
+}
+main {
+  background-color: black;
 }
 
 #cart {
@@ -123,7 +127,8 @@ tfoot {
 }
 
 #header {
-  background-color: #5694a1;
+  background-color: #144630f2;
+  /* background-color: #5694a1; */
 }
 .navbar {
   display: flex;
@@ -134,7 +139,7 @@ tfoot {
 .cont {
   /* margin: 2rem 2rem; */
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
 }
 input[type="submit"]:hover {
   cursor: pointer;
@@ -158,10 +163,14 @@ input[type="submit"]:hover {
 }
 .card {
   /* border-bottom: 1px solid black; */
-  background-color: #5694a194;
+  /* background-color: #5694a194; */
 }
 .card:hover {
   cursor: pointer;
+  /* opacity: 0.9; */
+  background-color: #3a6f6fb5;
+  /* background-color: #429aacd3; */
+  transition: background-color 0.2s ease;
 }
 .width-18 {
   width: 18rem;
@@ -199,8 +208,10 @@ input[type="submit"]:hover {
   place-items: center;
 }
 .selectedItem {
-  outline: 3px solid #2991ce;
-  background-color: #4ba8ba8e !important;
+  outline: 3px solid #45ce4b;
+  /* background-color: #50c6ddee !important; */
+  /* outline: 3px solid #2991ce;
+  background-color: #50c6ddee !important; */
 }
 .bg-modal {
   backdrop-filter: blur(5px);
@@ -208,16 +219,38 @@ input[type="submit"]:hover {
   background-color: #5694a194;
 }
 .bg-card {
-  /* backdrop-filter: blur(5px); */
-  /* filter: blur(10px); */
-  background-color: #5694a194;
+  /* background-color: #5694a1e6; */
+  background-color: #284b4bb5;
 }
 .bg-blur {
   backdrop-filter: blur(10px);
 }
 footer {
-  background-color: #5694a1;
+  background-color: #144630f2;
+  /* background-color: #5694a1; */
 }
+.bg-black {
+  background-color: #000000;
+}
+.form-control:valid {
+  background-color: #000000 !important;
+}
+.form-control:focus {
+  background-color: #000000 !important;
+}
+.modal .form-control:valid {
+  background-color: #1f3539 !important;
+}
+.modal .form-control:focus {
+  background-color: #1f3539 !important;
+}
+.modal .form-control {
+  background-color: #1f3539;
+}
+.modal .form-select {
+  background-color: #1f3539;
+}
+/* 1f3539 */
 
 @media only screen and (max-width: 1300px) {
   .login-card {

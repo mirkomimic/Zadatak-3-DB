@@ -90,6 +90,17 @@ class Item {
     return $array;
   }
 
+  public static function getAllItems($restaurant_id, $conn) {
+    $query = "SELECT * FROM items WHERE restaurant_id=$restaurant_id";
+    $result = $conn->query($query);
+    
+    $array= [];
+    while($row = $result->fetch_assoc()) {
+      $array[] = $row;
+    }
+    return $array;
+  }
+
 
 
 

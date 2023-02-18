@@ -5,8 +5,11 @@ $("#editItemModal").on("hidden.bs.modal", function () {
   $(this).find("form").trigger("reset");
 });
 
+$("#alert").hide();
+
 // add item
-$("#addItemForm").submit(function (e) {
+$(document).on("submit", "#addItemForm", function (e) {
+  // $("#addItemForm").submit(function (e) {
   e.preventDefault();
   const form = $(this).serialize();
 
@@ -17,12 +20,16 @@ $("#addItemForm").submit(function (e) {
   });
   request.done(function (response, status, jqXHR) {
     if (response === "Success") {
-      location.reload(true);
-      alert("Item added");
+      // location.reload(true);
+      $("#addItemModal").modal("toggle");
+      getAllItems();
+      // alert("Item added");
+      $("#alert").show().find("strong").html("Item added!");
     } else {
       console.log("Error adding item" + response);
     }
   });
+  $("#alert").hide().delay(3000).fadeOut(800);
   request.fail(function (jqXHR, textStatus, error) {
     console.log("Error adding item " + textStatus, error);
   });
@@ -45,12 +52,15 @@ $(document).on("submit", ".deleteItemForm", function (e) {
   });
   request.done(function (response, status, jqXHR) {
     if (response === "Success") {
-      alert("Item deleted");
-      location.reload(true);
+      // alert("Item deleted");
+      // location.reload(true);
+      getAllItems();
+      $("#alert").show().find("strong").html("Item deleted!");
     } else {
       console.log("Error adding item" + response);
     }
   });
+  $("#alert").hide().delay(3000).fadeOut(800);
   request.fail(function (jqXHR, textStatus, error) {
     console.log("Error adding item " + textStatus, error);
   });
@@ -88,7 +98,7 @@ $("#btn_edit_item").click(function (e) {
 });
 
 // edit item
-$("#editItemForm").submit(function (e) {
+$(document).on("submit", "#editItemForm", function (e) {
   e.preventDefault();
   const form = $(this).serialize();
   console.log(form);
@@ -100,12 +110,16 @@ $("#editItemForm").submit(function (e) {
   request.done(function (response, status, jqXHR) {
     console.log(response);
     if (response === "Success") {
-      location.reload(true);
-      alert("Item added");
+      // location.reload(true);
+      $("#editItemModal").modal("toggle");
+      getAllItems();
+      $("#alert").show().find("strong").html("Item edited!");
+      // alert("Item edited");
     } else {
       console.log("Error adding item" + response);
     }
   });
+  $("#alert").hide().delay(3000).fadeOut(800);
   request.fail(function (jqXHR, textStatus, error) {
     console.log("Error adding item " + textStatus, error);
   });
@@ -113,50 +127,8 @@ $("#editItemForm").submit(function (e) {
 
 // selektuj item
 $(document).on("click", ".card", function () {
-  // $(".card").on("click", function () {
   $(this).toggleClass("selectedItem").siblings().removeClass("selectedItem");
-  // });
 });
-
-// select filter
-// $("#select_filter").change(function () {
-//   const restaurant_id = $("#restaurant_id").val();
-
-//   request = $.ajax({
-//     url: "controler/getItemsByPriceDesc.php",
-//     type: "post",
-//     data: { restaurant_id: restaurant_id },
-//   });
-
-//   request.done(function (response, textStatus, jqXHR) {
-//     var response = JSON.parse(response);
-//     console.log(response);
-
-//     $("#gridItems").empty();
-
-//     for (var i = 0; i < response.length; i++) {
-//       card = `
-//       <div class="card width-18 text-center bg-card">
-//         <p>Name: ${response[i].name} </p>
-//         <p>Price: ${response[i].price} </p>
-//         <p>Category: ${response[i].category} </p>
-//         <div class="m-2">
-//           <form action="" class="deleteItemForm" name="deleteItemForm">
-//             <input type="text" id="item_id" name="item_id" value="${response[i].id}" hidden>
-//             <input type="text" name="restaurant_id" value="${restaurant_id}" hidden>
-//             <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
-//           </form>
-//         </div>
-//       </div>`;
-
-//       $("#gridItems").append(card);
-//     }
-//   });
-
-//   request.fail(function (jqXHR, textStatus, error) {
-//     console.log("Desila se greska: " + textStatus, error);
-//   });
-// });
 
 // select filter
 $(document).on("change", "#select_filter", function () {
@@ -231,7 +203,7 @@ $(document).on("keyup", "#search_input", function () {
         <div class="m-2">
           <form action="" class="deleteItemForm" name="deleteItemForm">
             <input type="text" id="item_id" name="item_id" value="${response[i].id}" hidden>
-            <input type="text" name="restaurant_id" value="${restaurant_id}" hidden>
+            <input type="text" name="restaurant_id" value="${response[i].restaurant_id}" hidden>
             <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
           </form>
         </div>
@@ -245,3 +217,42 @@ $(document).on("keyup", "#search_input", function () {
     console.log("Desila se greska: " + textStatus, error);
   });
 });
+
+// funkcije
+function getAllItems() {
+  const restaurant_id = $("#restaurant_id").val();
+
+  request = $.ajax({
+    url: "controler/getAllItems.php",
+    type: "post",
+    data: { restaurant_id: restaurant_id },
+  });
+
+  request.done(function (response, textStatus, jqXHR) {
+    var response = JSON.parse(response);
+
+    $("#gridItems").empty();
+
+    for (var i = 0; i < response.length; i++) {
+      card = `
+        <div class="card width-18 text-center bg-card">
+          <p>Name: ${response[i].name} </p>
+          <p>Price: ${response[i].price} </p>
+          <p>Category: ${response[i].category} </p>
+          <div class="m-2">
+            <form action="" class="deleteItemForm" name="deleteItemForm">
+              <input type="text" id="item_id" name="item_id" value="${response[i].id}" hidden>
+              <input type="text" name="restaurant_id" value="${restaurant_id}" hidden>
+              <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
+            </form>
+          </div>
+        </div>`;
+
+      $("#gridItems").append(card);
+    }
+  });
+
+  request.fail(function (jqXHR, textStatus, error) {
+    console.log("Desila se greska: " + textStatus, error);
+  });
+}
