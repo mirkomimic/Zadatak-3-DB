@@ -45,10 +45,12 @@ class Restaurant extends User {
   }
 
 
+
   public function __toString()
   {
     return "Restaurant: $this->name<br>";
   }
+
 
 }
 

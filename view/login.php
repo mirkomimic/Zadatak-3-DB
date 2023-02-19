@@ -4,22 +4,28 @@ require_once "../db.php";
 
 if(isset($_SESSION['logged_user'])) {
   header("Location: ../");
-} else {
+} 
+else {
   if(isset($_POST['login'])) {
     if($_POST['email'] == "" || $_POST['password'] == "") {
       echo "Fill in all fields";
     } else {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
 
+      try {
         $_SESSION['logged_user'] = Controler\Controler::login($email, $password, $conn);
-        if ($_SESSION['logged_user'] == null) echo "Error! ";
-        else header("Location: ../");
-        // exit();
+      } catch (Exception $e) {
+        echo "Error logging in: " . $e->getMessage();
+      }
+
+      if ($_SESSION['logged_user'] == null) echo "Error! ";
+      else header("Location: ../");
+      // exit();
       }
       echo "Incorrect email or password";
-    }
   }
+}
 
 
 

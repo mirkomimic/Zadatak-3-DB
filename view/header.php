@@ -1,7 +1,7 @@
 <!-- header -->
 <header id="header" class="">
   <div class="hero d-flex justify-content-center align-items-center ">
-    <div class="hero_card rounded d-flex align-items-center justify-content-center">
+    <div class="hero_card d-flex align-items-center justify-content-center">
       <h3 >
         <?php
           switch ($user->type) {
@@ -21,13 +21,14 @@
   </div>
 </header>
 <!-- navbar -->
-<nav class="myNavbar sticky-top">
+<nav id="navbar" class="myNavbar sticky-top">
   <div class="cont d-flex">
     <div class="d-flex align-items-center">
       <h3 class="logo "><span class="span1">Food</span><span class="span2">D</span>elivery</h3>
     </div>
     <div class="nav_links d-flex align-items-center ms-auto me-5">
-      <ul class="d-flex mb-0 me-5 gap-3 ">
+      <ul class="d-flex mb-0 me-5">
+        <li><a href="#">Home</a></li>
         <li><a href="#items_section">Items</a></li>
         <li><a href="#orders_section">Orders</a></li>
       </ul>

@@ -41,8 +41,10 @@
           <strong>Alert</strong>
         </div>
       </section>
+      <!-- items section -->
       <section id="items_section">
         <h3 class="mb-2">Your items:</h3>
+        <hr>
         <div id="gridItems" class="gridItems justify-content-center gap-3">
           <?php
             $items = Model\Item::getItemsByRestaurantID($restaurant, $conn);
@@ -67,6 +69,23 @@
           } else echo "No Items!";
           ?>
         </div>
+        <nav id="pagination" aria-label="Page navigation example">
+          <ul class="pagination justify-content-center mt-2">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </section>
     
       <hr>
