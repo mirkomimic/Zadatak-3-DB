@@ -278,9 +278,7 @@ footer {
   height: 250px;
   width: 600px;
   /* background-color: #6f6e51a6; */
-  background: linear-gradient(135deg, rgb(255 224 3 / 7%), rgb(245 216 58 / 13%));
-  /* box-shadow: 0 8px 32px 0 rgba(159, 158, 158, 0.37); */
-  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  background: linear-gradient(135deg, rgb(255 224 3 / 17%), rgb(245 216 58 / 13%));
   backdrop-filter: blur(3px);
   color: #f9db50;
   border-radius: 20px;
