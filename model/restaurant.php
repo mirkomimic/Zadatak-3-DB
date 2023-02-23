@@ -24,6 +24,16 @@ class Restaurant extends User {
     }
   }
 
+  public static function getAllRestaurants($conn) {
+    $query = "SELECT * FROM restaurants";
+    $result = $conn->query($query);
+    $array = [];
+    while($row = $result->fetch_assoc()) {
+      $array[] = $row;
+    }
+    return $array;
+  }
+
 
 	public function getId() {
 		return $this->id;

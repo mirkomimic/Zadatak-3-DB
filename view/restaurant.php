@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Restaurant view</title>
 </head>
 <body>
 
   <div class="cont">
-    <main class="h-100">
+    <main class="min-vh-100">
       <!-- buttons and filters -->
       <section id="btns_and_filters" class="d-flex pt-5">
         <!-- Buttons for modals -->
@@ -27,9 +28,9 @@
           </div>
         </div>
         <!-- select filter -->
-        <div class="col-md-3 ms-auto mt-auto mb-auto">
+        <div id="price_sort" class="col-md-3 ms-auto mt-auto mb-auto">
           <select class="form-select form-select-lg border-success border-2 bg-black text-light" id="select_filter" required>
-            <option disabled hidden selected>Sort by Price</option>
+            <option disabled hidden selected>Price &darr;&uarr;</option>
             <option name="priceDesc" value="priceDesc">Price &darr;</option>
             <option name="priceAsc" value="priceAsc">Price &uarr;</option>
           </select>
@@ -69,8 +70,8 @@
           } else echo "No Items!";
           ?>
         </div>
-        <nav id="pagination" aria-label="Page navigation example">
-          <ul class="pagination justify-content-center mt-2">
+        <nav id="pagination" class="mt-4" aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
             <li class="page-item">
               <a class="page-link" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -254,5 +255,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
+  <!-- <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script> -->
 </body>
 </html>

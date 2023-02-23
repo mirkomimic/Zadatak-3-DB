@@ -238,7 +238,9 @@ input[type="submit"]:hover {
 }
 .bg-modal {
   backdrop-filter: blur(5px);
-  background-color: #5694a194;
+  /* background-color: #5694a194; */
+  /* background: rgb(29, 211, 221); */
+  background: linear-gradient(180deg, rgb(36 105 108 / 72%) 0%, rgb(39 95 96 / 35%) 100%);
 }
 .bg-card {
   background-color: #284b4bb5;
@@ -293,14 +295,24 @@ footer {
   background-color: #000000;
   border-color: #284b4bb5;
 }
+#price_sort select {
+  width: 8rem;
+  font-size: 1rem;
+}
 
 @media only screen and (max-width: 1300px) {
   .login-card {
     width: 60%;
   }
+  .gridItems {
+    grid-template-columns: repeat(2, 300px);
+  }
 }
 @media only screen and (max-width: 950px) {
   .gridItems {
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(1, 300px);
+  }
+  .cont {
+    width: 90%;
   }
 }

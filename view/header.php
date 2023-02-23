@@ -26,11 +26,17 @@
     <div class="d-flex align-items-center">
       <h3 class="logo "><span class="span1">Food</span><span class="span2">D</span>elivery</h3>
     </div>
-    <div class="nav_links d-flex align-items-center ms-auto me-5">
-      <ul class="d-flex mb-0 me-5">
+    <div class="nav_links d-flex align-items-center ms-auto">
+      <ul class="d-flex mb-0 me-md-5">
         <li><a href="#">Home</a></li>
-        <li><a href="#items_section">Items</a></li>
+        <?php if(isset($restaurant)): ?>
+          <li><a href="#items_section">Items</a></li>
+        <?php endif ?>
         <li><a href="#orders_section">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+        <?php if(isset($customer)): ?>
+          <li><i class='bx bx-cart fs-2'></i></li>
+        <?php endif ?>
       </ul>
     </div>
     <div class="logout-box d-flex align-items-center">
