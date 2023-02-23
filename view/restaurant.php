@@ -21,15 +21,15 @@
           <button type="button" id="btn_edit_item" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editItemModal">Edit Item</button>
         </div>
         <!-- text filter -->
-        <div class="col-md-3 d-flex align-items-center justify-content-center">
+        <div class="col-md-3 d-flex align-items-center justify-content-center mx-auto">
           <div class="form-floating">
             <input type="text" name="itemSearch" class="form-control border-success border-2 bg-black text-light" id="search_input" placeholder="Search">
             <label for="search_input">Search</label>
           </div>
         </div>
         <!-- select filter -->
-        <div id="price_sort" class="col-md-3 ms-auto mt-auto mb-auto">
-          <select class="form-select form-select-lg border-success border-2 bg-black text-light" id="select_filter" required>
+        <div id="price_sort" class="col-md-3  mt-auto mb-auto">
+          <select class="form-select form-select-lg border-success border-2 bg-black text-light ms-auto" id="select_filter" required>
             <option disabled hidden selected>Price &darr;&uarr;</option>
             <option name="priceDesc" value="priceDesc">Price &darr;</option>
             <option name="priceAsc" value="priceAsc">Price &uarr;</option>
