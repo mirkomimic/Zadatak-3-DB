@@ -218,6 +218,61 @@ $(document).on("keyup", "#search_input", function () {
   });
 });
 
+// add to cart
+$(document).on("submit", "#addToCartForm", function (e) {
+  e.preventDefault();
+  const form = $(this).serialize();
+  console.log(form);
+  request = $.ajax({
+    url: "controler/addToCart.php",
+    type: "post",
+    data: form,
+  });
+  request.done(function (response, status, jqXHR) {
+    // console.log(response);
+    if (response === "Success") {
+      // location.reload(true);
+      // getAllItems();
+      // $("#alert").show().find("strong").html("Item edited!");
+      getAllItemsFromCart();
+      // alert("Item added to cart");
+    } else {
+      console.log("Error adding item to cart" + response);
+    }
+  });
+  // $("#alert").hide().delay(3000).fadeOut(800);
+  request.fail(function (jqXHR, textStatus, error) {
+    console.log("Error adding item " + textStatus, error);
+  });
+});
+// remove from cart
+$(document).on("submit", "#removeFromCartForm", function (e) {
+  e.preventDefault();
+  const form = $(this).serialize();
+  console.log(form);
+  request = $.ajax({
+    url: "controler/removeFromCart.php",
+    type: "post",
+    data: form,
+  });
+  request.done(function (response, status, jqXHR) {
+    console.log(response);
+    if (response === "Success") {
+      // location.reload(true);
+      // getAllItems();
+      // $("#alert").show().find("strong").html("Item edited!");
+      getAllItemsFromCart();
+      // alert("Item removed from cart");
+    } else {
+      console.log("Error removing item form cart" + response);
+    }
+  });
+  // $("#alert").hide().delay(3000).fadeOut(800);
+  request.fail(function (jqXHR, textStatus, error) {
+    console.log("Error adding item " + textStatus, error);
+  });
+});
+
 // funkcije
 function getAllItems() {
   const restaurant_id = $("#restaurant_id").val();
@@ -249,6 +304,55 @@ function getAllItems() {
         </div>`;
 
       $("#gridItems").append(card);
+    }
+  });
+
+  request.fail(function (jqXHR, textStatus, error) {
+    console.log("Desila se greska: " + textStatus, error);
+  });
+}
+
+function getAllItemsFromCart() {
+  // const restaurant_id = $("#restaurant_id").val();
+
+  request = $.ajax({
+    url: "controler/getAllItemsFromCart.php",
+    type: "post",
+    data: "",
+  });
+
+  request.done(function (response, textStatus, jqXHR) {
+    var response = JSON.parse(response);
+    // console.log(response);
+    // console.log(response.length);
+
+    $("#cart table tbody").empty();
+
+    let grandTotal = 0;
+    let qtyInCart = 0;
+    for (var i = 0; i < response.length; i++) {
+      card = `
+        <tr>
+          <td>${response[i].name}</td>
+          <td>${response[i].price}</td>
+          <td>${response[i].qty}</td>
+          <td>${response[i].price * response[i].qty}</td>
+        </tr>
+      `;
+      grandTotal += response[i].price * response[i].qty;
+      $("#cart table tbody").append(card);
+      qtyInCart += response[i].qty;
+    }
+    console.log(grandTotal);
+    if (grandTotal == 0) {
+      $("#cart table tbody").append('<td colspan="4">Empty Cart</td>');
+    }
+    $("#grand_total").html(grandTotal);
+    $("#qtyInCart").html(qtyInCart);
+    if (qtyInCart > 0) {
+      $("#cartIcon i").addClass("bx-tada");
+    } else {
+      $("#cartIcon i").removeClass("bx-tada");
     }
   });
 

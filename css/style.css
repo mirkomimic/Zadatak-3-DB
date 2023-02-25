@@ -300,6 +300,16 @@ footer {
   width: 8rem;
   font-size: 1rem;
 }
+.add-remove-btns {
+  width: 2rem;
+}
+#cartIcon {
+  transition: all 0.2s ease;
+}
+#cartIcon:hover {
+  cursor: pointer;
+  color: #ffe702;
+}
 
 @media only screen and (max-width: 1300px) {
   .login-card {

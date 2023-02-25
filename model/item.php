@@ -14,7 +14,7 @@ class Item {
     $this->id = $id;
     $this->name = $name;
     // $this->price = $price;
-    $this->setPrice($price);
+    $this->price = $price;
     $this->restaurant = $restaurant;
     $this->category = $category;
   }
@@ -49,6 +49,12 @@ class Item {
     $query = "SELECT id, name, price, category FROM items WHERE id=$id";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
+    return $row;
+  }
+  public static function getItem($id, $conn) {
+    $query = "SELECT * FROM items WHERE id=$id";
+    $result = $conn->query($query);
+    $row = $result->fetch_object();
     return $row;
   }
 
@@ -130,17 +136,15 @@ class Item {
   }
 
   public function setPrice($price) {
-    $this->price = Format::formatNumber(intval($price));
-
-    return $this;
+    $this->price = $price;
   }
 
 
 
-  public function __toString()
-  {
-    return "Item id: $this->id. <br> Item name: $this->name<br> Price: {$this->formatNumber($this->getPrice())} <br>Restaurant: {$this->restaurant->getName()}<br><br>";
-  }
+  // public function __toString()
+  // {
+  //   return "Item id: $this->id. <br> Item name: $this->name<br> Price: {$this->formatNumber($this->getPrice())} <br>Restaurant: {$this->restaurant->getName()}<br><br>";
+  // }
 
 }
 

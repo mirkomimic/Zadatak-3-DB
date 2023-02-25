@@ -35,7 +35,12 @@
         <li><a href="#orders_section">Orders</a></li>
         <li><a href="#">Contact</a></li>
         <?php if(isset($customer)): ?>
-          <li><i class='bx bx-cart fs-2'></i></li>
+          <li id="cartIcon">
+            <i class='bx bx-cart fs-2'></i>
+            <span id="qtyInCart">
+              <?= Model\ShoppingCart::getTotalQty($_SESSION['shoppingCart']) ?>
+            </span>
+          </li>
         <?php endif ?>
       </ul>
     </div>

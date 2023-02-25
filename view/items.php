@@ -42,10 +42,10 @@
 //   } 
 // }
 
-// if(isset($_POST['clear-cart'])) {
-//   unset($_SESSION['shoppingCart']);
-//   // header("Refresh:0");
-// }
+if(isset($_POST['clear-cart'])) {
+  unset($_SESSION['shoppingCart']);
+  header("Refresh:0");
+}
 
 // if(isset($_POST['order'])) {
 
@@ -96,14 +96,19 @@
           ?>
           <div class="card2 rounded-2 width-18 text-center bg-card">
             <p>Name: <?= $i['name'] ?></p>
-            <p>Price: <?= $i['price'] ?></p>
+            <p>Price: <?=  Model\Item::formatNumber($i['price']) ?></p>
             <p>Category: <?= $i['category'] ?></p>
-            <div class="m-2">
-              <form action="" class="add_remove_from_cart" name="add_remove_from_cart">
+            <!-- add/remove btns -->
+            <div class="m-2 d-flex justify-content-center gap-3">
+              <form action="" id="removeFromCartForm" name="removeFromCartForm">
                 <input type="text" id="item_id" name="item_id" value="<?= $i['id'] ?>" hidden>
                 <input type="text" name="restaurant_id" value="<?= $rId ?>" hidden>
-                <input type="submit" name="add_to_cart" class="btn btn-outline-success btn-sm" value="+">
-                <input type="submit" name="remove_from_cart" class="btn btn-outline-danger btn-sm" value="-">
+                <input type="submit" name="remove_from_cart" class="btn btn-outline-danger btn-sm add-remove-btns" value="-">
+              </form>
+              <form action="" id="addToCartForm" name="addToCartForm">
+                <input type="text" id="item_id" name="item_id" value="<?= $i['id'] ?>" hidden>
+                <input type="text" name="restaurant_id" value="<?= $rId ?>" hidden>
+                <input type="submit" name="add_to_cart" class="btn btn-outline-success btn-sm add-remove-btns" value="+">
               </form>
             </div>
           </div>
@@ -113,7 +118,7 @@
           ?>
         </div>
         <br><br>
-
+        <!-- shopping cart -->
         <div id="cart">
           <h3>Shopping Cart:</h3>
           <table>
@@ -133,7 +138,7 @@
                   <?= $sc->item->getName(); ?>
                 </td>
                 <td>
-                  <?= $sc->formatNumber($sc->item->getPrice()); ?>
+                  <?= $sc->formatNumber(intval($sc->item->getPrice())); ?>
                 </td>
                 <td>
                   <?= $sc->qty ?>
@@ -143,20 +148,20 @@
                 </td>
               </tr>
               <?php endforeach ?>
-              <tfoot>
+            </tbody>
+            <?php else: ?>
+              <tr>
+                <td colspan="4">Empty Cart</td>
+              </tr>
+            <?php endif ?>
+            <tfoot>
                 <tr>
                   <td colspan=""></td>
                   <td colspan=""></td>
                   <td colspan="">Grand Total:</td>
-                  <td><?= Model\ShoppingCart::formatNumber(Model\ShoppingCart::getGrandTotal($_SESSION['shoppingCart'])) ?></td>
+                  <td id="grand_total"><?= Model\ShoppingCart::formatNumber(Model\ShoppingCart::getGrandTotal($_SESSION['shoppingCart'])) ?></td>
                 </tr>
-              <?php else: ?>
-                <tr>
-                  <td colspan="4">Empty Cart</td>
-                </tr>
-              <?php endif ?>
-              </tfoot>
-            </tbody>
+            </tfoot>           
           </table><br>
           <div class="flex-row">
             <?php
@@ -167,16 +172,17 @@
               }
             ?>
             <form action="" method="post">
-              <input type="submit" value="Clear Cart" name="clear-cart" <?= disableBtn(); ?>>
+              <input class="btn btn-outline-warning btn-sm" type="submit" value="Clear Cart" name="clear-cart" <?= disableBtn(); ?>>
             </form>
             <form action="" method="post">
-              <input type="submit" value="Order" name="order" <?= disableBtn(); ?>>
+              <input class="btn btn-outline-success btn-sm" type="submit" value="Order" name="order" <?= disableBtn(); ?>>
             </form>
           </div>
         </div>
       </section>
     </main>
   </div>
+  <?php require_once "view/footer.php" ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>

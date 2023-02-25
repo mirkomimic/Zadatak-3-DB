@@ -33,6 +33,13 @@ class Restaurant extends User {
     }
     return $array;
   }
+  public static function getRestaurantById($id, $conn) {
+    $query = "SELECT * FROM restaurants WHERE id=$id";
+    $result = $conn->query($query);
+    $row = $result->fetch_object();
+    return $row;
+  }
+
 
 
 	public function getId() {

@@ -12,6 +12,10 @@ class ShoppingCart {
     $this->qty = $qty;
   }
 
+  // private function getItem() {
+  //   return $this->item;
+  // }
+
   public static function returnItemIDs($array) {
     $arrayOfIDs = [];
     foreach($array as $a) {
@@ -28,8 +32,16 @@ class ShoppingCart {
     return $grandTotal;
   }
 
+  public static function getTotalQty($array) {
+    $totalQty = 0;
+    foreach($array as $sc) {
+      $totalQty += $sc->qty;
+    }
+    return $totalQty;
+  }
+
   public function getTotal() {
-    return $this->item->getPrice() * $this->qty;
+    return intval($this->item->getPrice()) * $this->qty;
   }
 
 
