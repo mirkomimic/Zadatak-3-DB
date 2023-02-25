@@ -24,9 +24,9 @@ main {
 }
 
 #cart {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 500px;
+  left: 500px; */
 }
 h3 {
   margin: 0;
@@ -50,7 +50,7 @@ td {
 }
 table thead,
 tfoot {
-  background-color: antiquewhite;
+  background-color: #3a6f6fb5;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -198,7 +198,8 @@ input[type="submit"]:hover {
 .justify-content-between {
   justify-content: space-between;
 }
-.card:hover {
+.card:hover,
+.card2:hover {
   cursor: pointer;
   background-color: #3a6f6fb5;
   transition: background-color 0.2s ease;

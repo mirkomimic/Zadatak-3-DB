@@ -2,13 +2,13 @@
   // include "view/header.php";
 
 
-// if(isset($_GET['rId'])) {
-//   $rId = $_GET['rId'];
-//   include "view/items.php";
-//   exit();
-// } else {
-//   unset($_SESSION['shoppingCart']);
-// }
+if(isset($_GET['rId'])) {
+  $rId = $_GET['rId'];
+  include "view/items.php";
+  exit();
+} else {
+  unset($_SESSION['shoppingCart']);
+}
 
 // if(isset($_POST['reset-orders'])) {
 //   unset($_SESSION['orders']);
