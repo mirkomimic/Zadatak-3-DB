@@ -273,6 +273,18 @@ $(document).on("submit", "#removeFromCartForm", function (e) {
   });
 });
 
+$(document).on("click", "#cartIcon", function () {
+  console.log("radi");
+  if ($("#cart").hasClass("visible1")) {
+    $("#cart").removeClass("visible1");
+    $("#cart").addClass("hidden1");
+  } else {
+    $("#cart").addClass("visible1");
+    $("#cart").removeClass("hidden1");
+  }
+  // $("#cart").addClass("visible1");
+});
+
 // funkcije
 function getAllItems() {
   const restaurant_id = $("#restaurant_id").val();

@@ -14,38 +14,42 @@
   <div class="cont">
     <main class="min-vh-100">
       <!-- buttons and filters -->
-      <section id="btns_and_filters" class="d-flex pt-5">
+      <section id="btns_and_filters" class="container pt-5">
         <!-- Buttons for modals -->
-        <div class="col-md-3 border border-success pt-2 pb-2 text-center me-auto rounded-pill">
-          <button type="button" class="btn btn-success btn-sm my-1" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
-          <button type="button" id="btn_edit_item" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editItemModal">Edit Item</button>
-        </div>
-        <!-- text filter -->
-        <div class="col-md-3 d-flex align-items-center justify-content-center mx-auto">
-          <div class="form-floating">
-            <input type="text" name="itemSearch" class="form-control border-success border-2 bg-black text-light" id="search_input" placeholder="Search">
-            <label for="search_input">Search</label>
+        <div class="row">      
+          <div class="col">
+            <div class="border border-success rounded-pill py-2 text-center max-w-300">
+              <button type="button" class="btn btn-success btn-sm my-1" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
+              <button type="button" id="btn_edit_item" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editItemModal">Edit Item</button>
+            </div>
           </div>
-        </div>
-        <!-- select filter -->
-        <div id="price_sort" class="col-md-3  mt-auto mb-auto">
+          <!-- text filter -->
+          <div class="col d-flex align-items-center justify-content-center ">
+            <div class="form-floating">
+              <input type="text" name="itemSearch" class="form-control border-success border-2 bg-black text-light" id="search_input" placeholder="Search">
+              <label for="search_input">Search</label>
+            </div>
+          </div>
+          <!-- select filter -->
+          <div id="price_sort" class="col my-auto">
           <select class="form-select form-select-lg border-success border-2 bg-black text-light ms-auto" id="select_filter" required>
             <option disabled hidden selected>Price &darr;&uarr;</option>
             <option name="priceDesc" value="priceDesc">Price &darr;</option>
             <option name="priceAsc" value="priceAsc">Price &uarr;</option>
           </select>
         </div>
+        </div>
       </section>
       <!-- alert div -->
-      <section id="alert_section" class="position-relative p-3 mt-5">
+      <section id="alert_section" class="position-relative p-3">
         <div class="alert alert-success col-md-3 m-auto position-absolute top-50 start-50 translate-middle" id="alert" role="alert">
           <strong>Alert</strong>
         </div>
       </section>
       <!-- items section -->
       <section id="items_section">
-        <h3 class="mb-2">Your items:</h3>
-        <hr>
+        <h3 class="my-3 text-warning text-uppercase text-center">Your items</h3>
+        
         <div id="gridItems" class="gridItems justify-content-center gap-3">
           <?php
             $items = Model\Item::getItemsByRestaurantID($restaurant, $conn);
@@ -70,6 +74,7 @@
           } else echo "No Items!";
           ?>
         </div>
+        <!-- pagination -->
         <nav id="pagination" class="mt-4" aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             <li class="page-item">
@@ -89,10 +94,10 @@
         </nav>
       </section>
     
-      <hr>
+      
       <!-- Orders -->
       <section id="orders_section">
-        <h3>Orders for you:</h3>
+        <h3 class="text-warning text-uppercase text-center my-3">Orders for you</h3>
         <form action="" method="post">
           <input type="submit" value="reset orders" name="reset-orders">
         </form>

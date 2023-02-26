@@ -87,7 +87,8 @@ if(isset($_POST['clear-cart'])) {
       <a href="./"><< Go Back</a>
     </div>
       <section id="items_section" class="mt-4">
-        <h3 class="mb-2">Items:</h3>
+        <h3 class="my-4 text-warning text-center text-uppercase">Items</h3>
+        
         <div id="gridItems" class="gridItems justify-content-center gap-3">
           <?php
           $items = Model\Item::getAllItems($rId, $conn);
@@ -117,68 +118,26 @@ if(isset($_POST['clear-cart'])) {
           } else echo "No Items!";
           ?>
         </div>
-        <br><br>
-        <!-- shopping cart -->
-        <div id="cart">
-          <h3>Shopping Cart:</h3>
-          <table>
-            <thead>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-            </thead>
-            <tbody>
-              <?php
-                if(!empty($_SESSION['shoppingCart'])):
-                  foreach($_SESSION['shoppingCart'] as $sc):
-              ?>
-              <tr>
-                <td>
-                  <?= $sc->item->getName(); ?>
-                </td>
-                <td>
-                  <?= $sc->formatNumber(intval($sc->item->getPrice())); ?>
-                </td>
-                <td>
-                  <?= $sc->qty ?>
-                </td>
-                <td>
-                  <?= $sc->formatNumber($sc->getTotal()) ?>
-                </td>
-              </tr>
-              <?php endforeach ?>
-            </tbody>
-            <?php else: ?>
-              <tr>
-                <td colspan="4">Empty Cart</td>
-              </tr>
-            <?php endif ?>
-            <tfoot>
-                <tr>
-                  <td colspan=""></td>
-                  <td colspan=""></td>
-                  <td colspan="">Grand Total:</td>
-                  <td id="grand_total"><?= Model\ShoppingCart::formatNumber(Model\ShoppingCart::getGrandTotal($_SESSION['shoppingCart'])) ?></td>
-                </tr>
-            </tfoot>           
-          </table><br>
-          <div class="flex-row">
-            <?php
-              function disableBtn() {
-                if (empty($_SESSION['shoppingCart'])) {
-                  return "disabled";
-                }  
-              }
-            ?>
-            <form action="" method="post">
-              <input class="btn btn-outline-warning btn-sm" type="submit" value="Clear Cart" name="clear-cart" <?= disableBtn(); ?>>
-            </form>
-            <form action="" method="post">
-              <input class="btn btn-outline-success btn-sm" type="submit" value="Order" name="order" <?= disableBtn(); ?>>
-            </form>
-          </div>
-        </div>
+
+        <!-- pagination -->
+        <nav id="pagination" class="mt-4" aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
       </section>
     </main>
   </div>

@@ -1,5 +1,6 @@
 @import url(custom.css);
 @import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 * {
   box-sizing: border-box;
@@ -24,10 +25,27 @@ main {
 }
 
 #cart {
-  /* position: absolute;
-  top: 0;
-  left: 500px; */
+  position: absolute;
+  top: 150%;
+  right: -250;
+  width: 35rem;
+  /* visibility: hidden;
+  opacity: 0; */
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+  background-color: #162623c2;
 }
+.visible1 {
+  /* display: block; */
+  visibility: visible;
+  opacity: 1;
+  /* backdrop-filter: blur(5); */
+}
+.hidden1 {
+  /* display: block; */
+  visibility: hidden;
+  opacity: 0;
+}
+
 h3 {
   margin: 0;
 }
@@ -310,6 +328,23 @@ footer {
   cursor: pointer;
   color: #ffe702;
 }
+main h3,
+#cart h3 {
+  /* font-family: "Prosto One", cursive; */
+  font-family: "Bebas Neue", cursive;
+  font-size: 2.5rem;
+}
+#items_section {
+  border: 1px solid #424141;
+  border-radius: 10px;
+  /* box-shadow: -8px -8px 14px -4px rgb(47 39 22 / 75%); */
+}
+#alert_section {
+  height: 5rem;
+}
+.max-w-300 {
+  max-width: 300px;
+}
 
 @media only screen and (max-width: 1300px) {
   .login-card {
@@ -325,5 +360,8 @@ footer {
   }
   .cont {
     width: 90%;
+  }
+  #cart {
+    right: -35;
   }
 }
