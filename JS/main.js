@@ -362,9 +362,9 @@ function getAllItemsFromCart() {
     $("#grand_total").html(grandTotal);
     $("#qtyInCart").html(qtyInCart);
     if (qtyInCart > 0) {
-      $("#cartIcon i").addClass("bx-tada");
+      $("#cartIcon").addClass("bx-tada");
     } else {
-      $("#cartIcon i").removeClass("bx-tada");
+      $("#cartIcon").removeClass("bx-tada");
     }
   });
 

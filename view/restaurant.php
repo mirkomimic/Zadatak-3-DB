@@ -47,10 +47,10 @@
         </div>
       </section>
       <!-- items section -->
-      <section id="items_section">
+      <section id="items_section" class="d-flex flex-column">
         <h3 class="my-3 text-warning text-uppercase text-center">Your items</h3>
         
-        <div id="gridItems" class="gridItems justify-content-center gap-3">
+        <div id="gridItems" class="gridItems justify-content-center gap-3 mb-4">
           <?php
             $items = Model\Item::getItemsByRestaurantID($restaurant, $conn);
             // print_r($item);
@@ -75,7 +75,7 @@
           ?>
         </div>
         <!-- pagination -->
-        <nav id="pagination" class="mt-4" aria-label="Page navigation example">
+        <nav id="pagination" class="mt-auto" aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             <li class="page-item">
               <a class="page-link" href="#" aria-label="Previous">
