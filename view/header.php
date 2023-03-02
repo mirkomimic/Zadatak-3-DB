@@ -42,7 +42,7 @@
             </span>
             <!-- shopping cart -->
             <div id="cart" class="p-2 rounded-3 hidden1 bg-blur">
-              <h3 class="text-center my-3 text-warning text-uppercase">Shopping Cart</h3>
+              <h3 class="text-center my-3 text-warning text-uppercase">Shopping Cart<i class='bx bxs-cart'></i></h3>
               <table class="mx-auto">
                 <thead>
                   <th>Name</th>

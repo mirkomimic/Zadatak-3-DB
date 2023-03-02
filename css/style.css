@@ -324,8 +324,8 @@ footer {
 #cartIcon {
   transition: all 0.2s ease;
 }
-#navbar ul:last-child:hover i,
-#navbar ul:last-child:hover span {
+#navbar ul li:last-child:hover > i,
+#navbar ul li:last-child:hover span {
   cursor: pointer;
   color: #ffe702;
 }
